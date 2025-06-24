@@ -24,8 +24,37 @@ This API lets you:
 
 Interactive Swagger documentation powered by FastAPI.
 
----
+## 📚 API Routes
+All responses are in JSON.
+| Method   | Endpoint              | Description                                                | Params                                                  |
+| -------- | --------------------- | ---------------------------------------------------------- | ------------------------------------------------------- |
+| **GET**  | `/evil-advice`        | Returns a random piece of evil advice from all categories. | None                                                    |
+| **GET**  | `/evil-advice/random` | Returns a random advice, optionally filtered by category.  | `category` (query param, optional)                      |
+| **GET**  | `/evil-advices`       | Returns all advice, optionally filtered by category.       | `category` (query param, optional)                      |
+| **GET**  | `/categories`         | Returns a list of all unique advice categories.            | None                                                    |
+| **POST** | `/evil-advice`        | Submit a new evil advice entry.                            | JSON Body: `{ "category": "string", "text": "string" }` |
 
+
+---
+## Get Random Advice
+```bash
+GET /evil-advice
+```
+## Get All Advice in "tech" Category
+```bash
+GET /evil-advices?category=tech
+```
+## Add New Advice
+```bash
+POST /evil-advice
+Content-Type: application/json
+
+{
+  "category": "social",
+  "text": "Post your ex’s phone number for fun."
+}
+
+```
 ## 🔧 Tech Stack
 
 - **Python 3.12+**
